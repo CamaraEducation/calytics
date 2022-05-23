@@ -35,7 +35,7 @@ class Authorize{
 	//log the user
 	public static function login(){
 		$user = mysqli_real_escape_string(conn(), $_POST['email']);
-		$pass = md5(mysqli_real_escape_string(conn(), $_POST['password']));
+		$pass = md5(mysqli_real_escape_string(conn(), $_POST['pass']));
 
 		$sql =  "select user_pass from users where username = '$user' or user_email = '$user'";
 		if(mysqli_num_rows(mysqli_query(conn(), $sql)) > 0){
