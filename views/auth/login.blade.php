@@ -22,6 +22,7 @@
 					<div class="login-wrapper">
 						<form action="http://bootstrap.gallery/unipro/v1-x/03-design-green/crm.html">
 							<div class="login-screen">
+								<div class="error"></div>
 								<div class="login-body">
 									<a href="crm.html" class="login-logo">
 										<img src="/assets/img/logo.svg" alt="iChat">
@@ -37,7 +38,7 @@
 									</div>
 									<div class="actions">
 										<a href="/reset">Forgot password?</a>
-										<button type="submit" class="btn btn-primary">Login</button>
+										<button type="button" id="login" class="btn btn-primary">Login</button>
 									</div>
 								</div>
 							</div>
