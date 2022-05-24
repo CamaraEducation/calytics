@@ -164,19 +164,12 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+                    <a href="/profile/view" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
                         <span class="avatar">
                             <img src="/assets/img/user.svg" alt="User Avatar">
                             <span class="status busy"></span>
                         </span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end md" aria-labelledby="userSettings">
-                        <div class="header-profile-actions">
-                            <a href="user-profile.html"><i class="icon-user1"></i>Profile</a>
-                            <a href="account-settings.html"><i class="icon-settings1"></i>Settings</a>
-                            <a href="forgot-password.html"><i class="icon-log-out1"></i>Logout</a>
-                        </div>
-                    </div>
                 </li>
             </ul>
             <!-- Header actions end -->
