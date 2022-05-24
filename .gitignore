@@ -3,8 +3,9 @@
 ._*
 .env
 
-# Composer files
 /cache/
+/node_modules/
+/upload/sheet/
 
 wiki.md
 
