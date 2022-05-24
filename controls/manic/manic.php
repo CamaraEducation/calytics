@@ -59,7 +59,7 @@ class ManicController{
 				$domain     = mysqli_real_escape_string(conn(), $Row[4]);
 	
 				if (!empty($sid) and !empty($start_time) and !empty($end_time) and !empty($duration) and !empty($domain)) {
-					$sq = "INSERT INTO manic_files VALUES (DEFAULT, '1', '$start_time', '$end_time', '$duration', '$domain', DEFAULT)";
+					$sq = "INSERT INTO manic_files VALUES (DEFAULT, '$sid', '$start_time', '$end_time', '$duration', '$domain', DEFAULT)";
 					mysqli_query(conn(), $sq);
 				}else{
 					header('HTTP/1.1 500 Internal Server Error');
@@ -77,12 +77,13 @@ class ManicController{
 				if($i > 0 or $Row[0] == 'Name'){continue;}
 
 				$sid        = mysqli_real_escape_string(conn(), $id);
+				$status		= mysqli_real_escape_string(conn(), $Row[0]);
 				$start_time = mysqli_real_escape_string(conn(), $Row[1]);
 				$end_time   = mysqli_real_escape_string(conn(), $Row[2]);
 				$duration   = mysqli_real_escape_string(conn(), $Row[3]);
 
 				if (!empty($sid) and !empty($start_time) and !empty($end_time) and !empty($duration)) {
-					$sq = "INSERT INTO manic_usage VALUES (DEFAULT, '$sid', '$start_time', '$end_time', '$duration', DEFAULT);";
+					$sq = "INSERT INTO manic_usage VALUES (DEFAULT, '$sid', '$status', '$start_time', '$end_time', '$duration', DEFAULT);";
 					mysqli_query(conn(), $sq);
 				}else{
 					header('HTTP/1.1 500 Internal Server Error');
