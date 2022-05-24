@@ -26,6 +26,7 @@
 		@js('/assets/js/modernizr')
 		@js('/assets/js/moment')
 		@js('/assets/js/main')
+		@js('/assets/js/auth')
 
 	</body>
 </html>
