@@ -11,8 +11,8 @@
 		<!-- please do not remove this section -->
 
 		<!-- Favicons -->
-		<link href="/assets/img/favicon.png" rel="icon">
-		<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+		<link href="/assets/img/fav.png" rel="icon">
+		<link href="/assets/img/fav.png" rel="apple-touch-icon">
 		<!-- Google Fonts -->
 		
 		@css("/assets/css/bootstrap.min")
@@ -24,6 +24,15 @@
 		<!-- Search Filter JS -->
 		@css("/assets/vendor/search-filter/search-filter")
 		@css("/assets/vendor/search-filter/custom-search-filter")
+		@css("/assets/css/custom")
+		@yield('styles')
+
+		<style>
+			.@yield('menu'){
+				background:#def7f0;
+			}
+		</style>
+
 	</head>
 	<body>
 		<div id="loading-wrapper">
@@ -37,6 +46,7 @@
 			<div class="main-container">
 				@include('layout.top')
 				@yield('content')
+				<div class="app-footer">Copyright (c) {{date('Y')}} {{$_ENV['COPYRIGHT']}}</div>
 			</div>
 		</div>
 
@@ -58,5 +68,7 @@
 
 		<!-- Main Js Required -->
 		@js("/assets/js/main")
+
+		@yield('scripts')
 	</body>
 </html>
