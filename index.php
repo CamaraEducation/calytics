@@ -41,6 +41,7 @@ define('BASEPATH', '/');
 define('app',	    'core');
 define('views',		'views');
 define('cache', 	'cache');
+define('upload', 	'upload');
 define('controls',	'controls');
 define('locale', 	'localization');
 
@@ -58,9 +59,90 @@ Route::add('/', function() {
     return Blade::render("home");
 });
 
-Route::add('/home', function() {
+Route::add('/dashboard', function() {
     return Blade::render('home');
 });
+
+/****************************************************
+ *                   USER MNGT ROUTES               *
+ *                  STARTING FROM HERE              *
+ ****************************************************/
+Route::add('/user/add', function() {
+    return Blade::render("user.add", ['role'=>['admin']]);
+});
+
+Route::add('/user/create', function() {
+    UserController::create();
+}, ['get', 'post']);
+
+Route::add('/users/view', function() {
+    return Blade::render("user.list", ['role'=>['admin']]);
+}, ['get', 'post']);
+ /****************************************************
+ *                   MANICTIME ROUTES               *
+ *                  STARTING FROM HERE              *
+ ****************************************************/
+
+Route::add('/manic', function() {
+    return Blade::render('manic.main');
+});
+
+Route::add('/manic/data/add', function() {
+    return Blade::render('manic.upload', ['role'=>['admin']]);
+});
+
+Route::add('/manic/data/add/([0-9]*)', function($id) {
+    return Blade::render('manic.create', [
+        'id'=>$id, 
+        'role'=>['admin', 'school']
+    ]);
+});
+
+Route::add('/manic/upload/([a-z]*)/([0-9]*)', function($task, $id) {
+    ManicController::import($id);
+}, ['get','post']);
+
+// route manic/data/schools
+Route::add('/manic/data/schools', function() {
+    return Blade::render('manic.schools');
+});
+
+//route /manic/data/brief/'+target
+Route::add('/manic/data/brief/([0-9]*)', function($id) {
+    return Blade::render('manic.brief', [
+        'id'=>$id
+    ]);
+});
+
+/****************************************************
+ *                   MANICTIME ROUTES               *
+ *                  STARTING FROM HERE              *
+ ****************************************************/
+Route::add('/schools/view', function() {
+    return Blade::render(
+        'school.list', 
+        ['viewer'=>['admin']]
+    );
+});
+
+Route::add('/school/add', function() {
+    return Blade::render(
+        'school.add', 
+        ['viewer'=>['admin']]
+    );
+});
+
+Route::add('/school/add/new', function() {
+    SchoolController::create();
+}, ['get', 'post']);
+
+Route::add('/school/search/([0-9]*)', function($search) {
+    switch($search) {
+        case '1': SchoolController::search_field(); break;
+        case '2': SchoolController::search_id(); break;
+        default: header('HTTP/1.0 405 Method Not Allowed'); break;
+    }
+}, ['get', 'post']);
 
 
 /****************************************************
@@ -82,16 +164,18 @@ Route::add('/login', function() {
     return Blade::render("login");
 });
 
-Route::add('/register', function() {
-    return Blade::render("register");
-});
-
 Route::add('/reset', function() {
     return Blade::render("reset");
 });
 
-Route::add('/notice/([a-z]*)', function($page) {
-    return Blade::render("notice", ['page'=>$page]);
+Route::add('/test/upload', function() {
+    FileUploader::upload('file', 'test');
+}, ['get','post']);
+
+Route::add('/test', function() {   
+    # return unauthorised access header
+    echo '<pre>';
+    print_r(ManicStatsController::sc_active(1));
 });
 
 /****************************************************
