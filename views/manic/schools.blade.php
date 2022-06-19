@@ -22,9 +22,9 @@
 								<tr class="text-center">
 									<th>#</th>
 									<th>Name</th>
-									<th>Projects</th>
-									<th>Top Apps</th>
-									<th>Active (hrs)</th>
+									<th>Country</th>
+									<th>Region</th>
+									<th>Ownership</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -41,7 +41,7 @@
 											data-bs-original-title="Brief Stat" class='btoggle' data-target="{{$school['id']}}">
 											<i class="icon-arrow-down-circle"></i>
 										</a> &NonBreakingSpace;
-										<a href="" data-bs-toggle="tooltip" data-bs-placement="bottom" 
+										<a href="/manic/school/{{$school['id']}}" data-bs-toggle="tooltip" data-bs-placement="bottom" 
 											data-bs-original-title="Full Overview">
 											<i class="icon-log-in"></i>
 										</a>
@@ -54,7 +54,7 @@
 												<span class="visually-hidden">Loading...</span>
 											</div>
                                         </div>
-                                    </td>    
+                                    </td>   
                                 </tr>@php $i++ @endphp						
 								@endforeach								
 							</tbody>
@@ -83,6 +83,7 @@
                 $('tr[data-value]').each(function(){
                     if($(this).data('value') != target){
                         $(this).slideUp("slow");
+                        $(this).html('<td colspan="6" id="'+$(this).data('value')+'"><div class="col-md-12 text-center"> <div class="spinner-border" role="status"> <span class="visually-hidden">Loading...</span> </div> </div></td>');
                     }
                 });
                 getBrief();
