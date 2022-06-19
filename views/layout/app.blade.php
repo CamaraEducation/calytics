@@ -67,7 +67,8 @@
 		@js("/assets/vendor/search-filter/custom-search-filter")
 
 		<!-- Main Js Required -->
-		@js("/assets/js/main")
+		@js("/assets/js/main")		
+		@js('/assets/js/custom')
 
 		@yield('scripts')
 	</body>
