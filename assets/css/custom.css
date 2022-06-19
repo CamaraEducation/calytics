@@ -56,3 +56,44 @@ ul.statistics li .stat-app {
     margin-top: 15px;
 }
 
+.sc-brief{
+    height: 45vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.app-card, .file-card{
+    height: 50vh;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.empty-card{
+    background-image: url('/assets/img/icons/nothing.png');
+    background-size: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.av-toogle, .fv-toggle{
+    cursor: pointer;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.sect-header{
+    padding: 5px 0;
+}

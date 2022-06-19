@@ -96,7 +96,7 @@ function area_sc_active(uptime){
 		data: {
 			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 			datasets: [{
-				label: 'Schools',
+				label: 'Uptime',
 				data: uptime,
 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
 				borderColor: 'rgba(255,99,132,1)',
@@ -111,4 +111,101 @@ function area_sc_active(uptime){
             }
         }
 	});
+}
+
+function sc_active_vs_away(active, away){
+    var ctx = document.getElementById("sc_active_vs_away").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Active", "Idle"],
+            datasets: [{
+                label: 'Hours',
+                data: [active, away],
+                backgroundColor: [
+                    'rgba(0, 60, 159, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(0, 60, 159, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1,
+                hoverOffset: 9
+            }]
+        }
+    });
+}
+
+
+function sc_app_stat(labels, data){
+    var ctx = document.getElementById("sc_app_stat").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'App usage',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function app_stat_only(labels, data){
+    var ctx = document.getElementById("app_stat_only").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'App usage (hrs)',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function sc_file_stat(labels, data){
+    var ctx = document.getElementById("sc_file_stat").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'File Activity (hrs)',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 }
