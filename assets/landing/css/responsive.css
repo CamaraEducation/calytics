@@ -14,13 +14,14 @@
     .team-member .team-description { padding: 10px; }
 }
 @media (max-width:992px) {
+    .banner{display:none}
     h1, h1 { font-size: 50px; line-height: 60px; }
     h2, h2 { font-size: 40px; line-height: 50px; }
     .custom-mt-0 { margin-top: 0 !important }
 
     /*Header*/
     #header-wrap { padding: 10px 0; }
-    .navbar-toggler { background: #0049d0; height: 40px; width: 50px; padding: 0; margin: 0; }
+    .navbar-toggler { background: #0049d0; height: 40px; width: 50px; padding: 0; margin: 0; display:none !important;}
     .navbar-toggler span { width: 26px; height: 2px; margin: 5px auto; display: block; background: #ffffff; }
     .header.header-3 .navbar-toggler { background: #ffffff; }
     .header.header-3 .navbar-toggler span { background: #0049d0; }
