@@ -56,7 +56,7 @@ Blade::addPath(views.'/public');
  ****************************************************/
 
 Route::add('/', function() {
-    return Blade::render("home");
+    return Blade::render("landing");
 });
 
 Route::add('/dashboard', function() {
@@ -107,14 +107,46 @@ Route::add('/manic/data/schools', function() {
     return Blade::render('manic.schools');
 });
 
-//route /manic/data/brief/'+target
 Route::add('/manic/data/brief/([0-9]*)', function($id) {
     return Blade::render('manic.brief', [
         'id'=>$id
     ]);
 });
 
+Route::add('/manic/school/([0-9]*)', function($id) {
+    return Blade::render('manic.school', [
+        'id'=>$id
+    ]);
+});
+
 /****************************************************
+ *                    APP STAT ROUTES               *
+ *                  STARTING FROM HERE              *
+ ****************************************************/
+Route::add('/manic/app/([0-9a-z -]*)/([0-9]*)', function($app, $id) {
+    return Blade::render('modals.manic.app_overview', [
+        'app'=>$app, 'id'=>$id
+    ]);
+});
+
+Route::add('/manic/file/([0-9a-z .-]*)/([0-9]*)', function($file, $id) {
+    return Blade::render('modals.manic.file_overview', [
+        'file'=>$file, 'id'=>$id
+    ]);
+});
+
+Route::add('/manic/app/([0-9a-z -]*)', function($app) {
+    return Blade::render('manic.app_stat', [
+        'app'=>$app
+    ]);
+});
+
+// route manic/data/apps
+Route::add('/manic/data/apps', function() {
+    return Blade::render('manic.apps');
+});
+
+ /****************************************************
  *                   MANICTIME ROUTES               *
  *                  STARTING FROM HERE              *
  ****************************************************/
@@ -175,7 +207,7 @@ Route::add('/test/upload', function() {
 Route::add('/test', function() {   
     # return unauthorised access header
     echo '<pre>';
-    print_r(ManicStatsController::sc_active(1));
+    print_r(ManicStatsController::manic_app_stat('Google Chrome'));
 });
 
 /****************************************************
