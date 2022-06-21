@@ -184,18 +184,19 @@ Route::add('/school/search/([0-9]*)', function($search) {
  # /api/portal/sync
 Route::add('/api/portal/sync', function() {
     $data = file_get_contents('php://input');
-    return PortalApi::init($data);
-    /*$data = file_get_contents('php://input');
-    $file = upload.'/portal/'.$_SERVER['REQUEST_TIME'].rand(11111,999999).'.json';
-    file_put_contents($file, $data);
-    
-    if(PortalAPI::add_job('', $file)) {
+
+    $file = $_SERVER['REQUEST_TIME'].rand(11111,999999).'.json';;
+    $path = upload.'/portal/'.$file;
+
+    file_put_contents($path, $data);
+
+    if(PortalAPI::add_job($file)) {
         $res = '{"status":"success"}';
     } else {
         $res = '{"status":"error"}';
     }
 
-    return $res;*/
+    return $res;
 
 }, ['post']);
 
