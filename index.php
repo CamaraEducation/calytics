@@ -209,6 +209,10 @@ Route::add('/job/portal/import', function() {
     PortalJobs::import_data();
 });
 
+Route::add('/job/portal/import/([0-9]*)', function($id) {
+    PortalJobs::do_job($id);
+});
+
 /****************************************************
  *                 AUTHENTICATICATION               *
  *             DO NOT CHANGE THIS SECTION           *
