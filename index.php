@@ -56,11 +56,11 @@ Blade::addPath(views.'/public');
  ****************************************************/
 
 Route::add('/', function() {
-    return Blade::render("landing");
+	return Blade::render("landing");
 });
 
 Route::add('/dashboard', function() {
-    return Blade::render('home');
+	return Blade::render('home');
 });
 
 /****************************************************
@@ -68,15 +68,15 @@ Route::add('/dashboard', function() {
  *                  STARTING FROM HERE              *
  ****************************************************/
 Route::add('/user/add', function() {
-    return Blade::render("user.add", ['role'=>['admin']]);
+	return Blade::render("user.add", ['role'=>['admin']]);
 });
 
 Route::add('/user/create', function() {
-    UserController::create();
+	UserController::create();
 }, ['get', 'post']);
 
 Route::add('/users/view', function() {
-    return Blade::render("user.list", ['role'=>['admin']]);
+	return Blade::render("user.list", ['role'=>['admin']]);
 }, ['get', 'post']);
  /****************************************************
  *                   MANICTIME ROUTES               *
@@ -84,39 +84,39 @@ Route::add('/users/view', function() {
  ****************************************************/
 
 Route::add('/manic', function() {
-    return Blade::render('manic.main');
+	return Blade::render('manic.main');
 });
 
 Route::add('/manic/data/add', function() {
-    return Blade::render('manic.upload', ['role'=>['admin']]);
+	return Blade::render('manic.upload', ['role'=>['admin']]);
 });
 
 Route::add('/manic/data/add/([0-9]*)', function($id) {
-    return Blade::render('manic.create', [
-        'id'=>$id, 
-        'role'=>['admin', 'school']
-    ]);
+	return Blade::render('manic.create', [
+		'id'=>$id, 
+		'role'=>['admin', 'school']
+	]);
 });
 
 Route::add('/manic/upload/([a-z]*)/([0-9]*)', function($task, $id) {
-    ManicController::import($id);
+	ManicController::import($id);
 }, ['get','post']);
 
 // route manic/data/schools
 Route::add('/manic/data/schools', function() {
-    return Blade::render('manic.schools');
+	return Blade::render('manic.schools');
 });
 
 Route::add('/manic/data/brief/([0-9]*)', function($id) {
-    return Blade::render('manic.brief', [
-        'id'=>$id
-    ]);
+	return Blade::render('manic.brief', [
+		'id'=>$id
+	]);
 });
 
 Route::add('/manic/school/([0-9]*)', function($id) {
-    return Blade::render('manic.school', [
-        'id'=>$id
-    ]);
+	return Blade::render('manic.school', [
+		'id'=>$id
+	]);
 });
 
 /****************************************************
@@ -124,57 +124,66 @@ Route::add('/manic/school/([0-9]*)', function($id) {
  *                  STARTING FROM HERE              *
  ****************************************************/
 Route::add('/manic/app/([0-9a-z -]*)/([0-9]*)', function($app, $id) {
-    return Blade::render('modals.manic.app_overview', [
-        'app'=>$app, 'id'=>$id
-    ]);
+	return Blade::render('modals.manic.app_overview', [
+		'app'=>$app, 'id'=>$id
+	]);
 });
 
 Route::add('/manic/file/([0-9a-z .-]*)/([0-9]*)', function($file, $id) {
-    return Blade::render('modals.manic.file_overview', [
-        'file'=>$file, 'id'=>$id
-    ]);
+	return Blade::render('modals.manic.file_overview', [
+		'file'=>$file, 'id'=>$id
+	]);
 });
 
 Route::add('/manic/app/([0-9a-z -]*)', function($app) {
-    return Blade::render('manic.app_stat', [
-        'app'=>$app
-    ]);
+	return Blade::render('manic.app_stat', [
+		'app'=>$app
+	]);
 });
 
 // route manic/data/apps
 Route::add('/manic/data/apps', function() {
-    return Blade::render('manic.apps');
+	return Blade::render('manic.apps');
 });
 
- /****************************************************
+/****************************************************
  *                   MANICTIME ROUTES               *
  *                  STARTING FROM HERE              *
  ****************************************************/
 Route::add('/schools/view', function() {
-    return Blade::render(
-        'school.list', 
-        ['viewer'=>['admin']]
-    );
+	return Blade::render(
+		'school.list', 
+		['viewer'=>['admin']]
+	);
 });
 
 Route::add('/school/add', function() {
-    return Blade::render(
-        'school.add', 
-        ['viewer'=>['admin']]
-    );
+	return Blade::render(
+		'school.add', 
+		['viewer'=>['admin']]
+	);
 });
 
 Route::add('/school/add/new', function() {
-    SchoolController::create();
+	SchoolController::create();
 }, ['get', 'post']);
 
 Route::add('/school/search/([0-9]*)', function($search) {
-    switch($search) {
-        case '1': SchoolController::search_field(); break;
-        case '2': SchoolController::search_id(); break;
-        default: header('HTTP/1.0 405 Method Not Allowed'); break;
-    }
+	switch($search) {
+		case '1': SchoolController::search_field(); break;
+		case '2': SchoolController::search_id(); break;
+		default: header('HTTP/1.0 405 Method Not Allowed'); break;
+	}
 }, ['get', 'post']);
+
+/****************************************************
+ *                    PORTAL ROUTES                 *
+ *                  STARTING FROM HERE              *
+ ****************************************************/
+
+Route::add('/portal/dashboard', function() {
+	return Blade::render('portal.home');
+});
 
 /****************************************************
  *                      API ROUTES                  *
@@ -182,20 +191,20 @@ Route::add('/school/search/([0-9]*)', function($search) {
  ****************************************************/
 
 Route::add('/api/portal/sync', function() {
-    $data = file_get_contents('php://input');
+	$data = file_get_contents('php://input');
 
-    $file = $_SERVER['REQUEST_TIME'].rand(11111,999999).'.json';;
-    $path = upload.'/portal/'.$file;
+	$file = $_SERVER['REQUEST_TIME'].rand(11111,999999).'.json';;
+	$path = upload.'/portal/'.$file;
 
-    file_put_contents($path, $data);
+	file_put_contents($path, $data);
 
-    if(PortalAPI::add_job($file)) {
-        $res = '{"status":"success"}';
-    } else {
-        $res = '{"status":"error"}';
-    }
+	if(PortalAPI::add_job($file)) {
+		$res = '{"status":"success"}';
+	} else {
+		$res = '{"status":"error"}';
+	}
 
-    return $res;
+	return $res;
 
 }, ['post']);
 
@@ -206,11 +215,11 @@ Route::add('/api/portal/sync', function() {
  ****************************************************/
 
 Route::add('/job/portal/import', function() {
-    PortalJobs::import_data();
+	PortalJobs::import_data();
 });
 
 Route::add('/job/portal/import/([0-9]*)', function($id) {
-    PortalJobs::do_job($id);
+	PortalJobs::do_job($id);
 });
 
 /****************************************************
@@ -218,32 +227,32 @@ Route::add('/job/portal/import/([0-9]*)', function($id) {
  *             DO NOT CHANGE THIS SECTION           *
  ****************************************************/
 Route::add('/authorize/([a-z]*)', function($page) {
-    switch ($page){
-        case 'register' : Authorize::register(); break;
-        case 'login'    : Authorize::login(); break;
-        case 'reset'    : break;
-        case 'verify'   : break;
-        default:
-            header('Location: /404');
-    }
+	switch ($page){
+		case 'register' : Authorize::register(); break;
+		case 'login'    : Authorize::login(); break;
+		case 'reset'    : break;
+		case 'verify'   : break;
+		default:
+			header('Location: /404');
+	}
 }, 'post');
 
 Route::add('/login', function() {
-    return Blade::render("login");
+	return Blade::render("login");
 });
 
 Route::add('/reset', function() {
-    return Blade::render("reset");
+	return Blade::render("reset");
 });
 
 Route::add('/test/upload', function() {
-    FileUploader::upload('file', 'test');
+	FileUploader::upload('file', 'test');
 }, ['get','post']);
 
 Route::add('/test', function() {   
-    # return unauthorised access header
-    echo '<pre>';
-    print_r(ManicStatsController::manic_app_stat('Google Chrome'));
+	# return unauthorised access header
+	echo '<pre>';
+	print_r(ManicStatsController::manic_app_stat('Google Chrome'));
 });
 
 /****************************************************
@@ -267,12 +276,12 @@ Route::methodNotAllowed(function($path, $method) {
  *                  USE THIS SECTION                *
  ****************************************************/ 
 Route::add('/routes', function() {
-    $routes = Route::getAll();
-    echo '<ul>';
-    foreach ($routes as $route) {
-        echo '<li>'.$route['expression'].' ('.$route['method'].')</li>';
-    }
-    echo '</ul>';
+	$routes = Route::getAll();
+	echo '<ul>';
+	foreach ($routes as $route) {
+		echo '<li>'.$route['expression'].' ('.$route['method'].')</li>';
+	}
+	echo '</ul>';
 });
 
 // Run the Router with the given Basepath
