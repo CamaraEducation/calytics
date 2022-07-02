@@ -49,7 +49,7 @@ class PortalApi{
 				$data['category'],
 				$data['ownership'],
 				$region,
-				$$data['country'],
+				$data['country'],
 			);
 		}
 
