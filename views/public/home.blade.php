@@ -1,6 +1,7 @@
 @extends('layout.app')
 @section('menu', '')
 @section('submenu', 'manic')
+@section('title', 'DashBoard Brief')
 @section('styles')
 
 @endsection
@@ -106,7 +107,7 @@
 							@foreach ($manic_apps as $app)
 								<li>
 									<span class="stat-app">
-										<img src="{{IconsController::app($app['name'])}}" class="sc-flag" alt="{{$app['name']}}">
+										<img src="/{{IconsController::app($app['name'])}}" class="sc-flag" alt="{{$app['name']}}">
 									</span>
 									{{$app['name']}}<br>
 									{{TimeController::calc($app['duration'])}}
@@ -146,7 +147,7 @@
 							@php $sc = SchoolController::get($stat['sid']); @endphp
 							<li>
 								<span class="stat-icon">
-									<img src="assets/img/flags/1x1/{{strtolower($sc['sc_country'])}}.svg" class="sc-flag" alt="{{$sc['sc_name']}}">
+									<img src="/assets/img/flags/1x1/{{strtolower($sc['sc_country'])}}.svg" class="sc-flag" alt="{{$sc['sc_name']}}">
 								</span>
 								{{$sc['sc_name']}}<br>
 								{{TimeController::calc($stat['duration'])}}
