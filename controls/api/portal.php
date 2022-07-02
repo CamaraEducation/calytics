@@ -77,6 +77,6 @@ class PortalApi{
 
 	public static function add_job($file){
 		$sql = "INSERT INTO portal_jobs VALUES (DEFAULT, '$file', DEFAULT)";
-		mysqli_query(conn(), $sql);
+		return mysqli_query(conn(), $sql);
 	}
 }
