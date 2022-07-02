@@ -181,7 +181,6 @@ Route::add('/school/search/([0-9]*)', function($search) {
  *                  STARTING FROM HERE              *
  ****************************************************/
 
- # /api/portal/sync
 Route::add('/api/portal/sync', function() {
     $data = file_get_contents('php://input');
 
@@ -199,6 +198,16 @@ Route::add('/api/portal/sync', function() {
     return $res;
 
 }, ['post']);
+
+
+/****************************************************
+ *                      JOB ROUTES                  *
+ *                  STARTING FROM HERE              *
+ ****************************************************/
+
+Route::add('/job/portal/import', function() {
+    PortalJobs::import_data();
+});
 
 /****************************************************
  *                 AUTHENTICATICATION               *
