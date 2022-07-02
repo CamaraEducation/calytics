@@ -97,3 +97,12 @@ ul.statistics li .stat-app {
 .sect-header{
     padding: 5px 0;
 }
+
+.ui.fluid.category.search.focus {
+    visibility: hidden;
+}
+
+
+.ui.fluid.category.search {
+    visibility: hidden;
+}
