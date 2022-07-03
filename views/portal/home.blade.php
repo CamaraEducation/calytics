@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('menu', '')
+@section('menu', 'portal')
 @section('submenu', 'portal')
 @section('title', 'Portal Brief')
 @section('styles')
