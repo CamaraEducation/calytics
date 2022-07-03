@@ -82,7 +82,7 @@
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 				<div class="card">
 					<div class="card-header">
-						<div class="card-title">Active vs Away vs Offline (hrs)</div>
+						<div class="card-title">Active vs Away (hrs)</div>
 					</div>
 					<div class="card-body">
 						<canvas id="active_vs_away_vs_offline"></canvas>
