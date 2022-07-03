@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="print">
         <div class="row gutters">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -38,7 +38,7 @@
                                         </h6>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="profile-tile">
                                         <span class="icon">
                                             <i class="icon-clock1"></i>
@@ -50,6 +50,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="profile-avatar-tile">
+                            <button class="btn btn-primary container-fluid text-bold" data-bs-toggle="modal" data-bs-target="#exampleModalFullScreen">Filter</button>
+                            <div class="xs-space"></div>
+                            <button class="btn btn-warning container-fluid text-bold" onclick="printDiv('print')">Print</button>
                         </div>
                     </div>
                 </div>
@@ -157,6 +162,8 @@
 			</div>
         </div> 
 	</div>
+
+    @include('modals.portal.filter_report')
 @endsection
 @section('scripts')
 @js('https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js')
