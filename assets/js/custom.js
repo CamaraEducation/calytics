@@ -22,3 +22,38 @@ function convert_sec_min_hrs(sec){
 function timeCalc(i){
     return convert_sec_min_hrs(i);
 }
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var printModal = document.getElementById('reportPrint')
+
+    // replace printmodal content with printContents
+    printModal.innerHTML = printContents;
+
+    //toggle filterPortalReport modal
+    //$('#filterPortalReport').modal('toggle');
+
+    window.print();
+}
+
+function generate_pdf(){
+    $("#btnConvert").on('click', function () {
+        //var element = document.getElementById('print');
+        //html2pdf(element);
+        var divToPrint=document.getElementById('print');
+        var newWin=window.open('','Print-Window');
+        newWin.document.open();
+        newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+        newWin.document.close();
+        setTimeout(function(){newWin.close();},10);
+    });
+}
+
+function filter_report(){
+    // onfilter #filter click
+    $("#filter").on('click', function () {
+        // get date range from datepicker #range
+        var date_range = $("#ranger").val();
+        console.log(date_range);
+    });
+}
