@@ -25,6 +25,7 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-3">
 
+            @php $jobs = JobsController::available(); @endphp
             <!-- Header actions start -->
             <ul class="header-actions">
                 <li class="dropdown">
@@ -33,59 +34,22 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end lrg" aria-labelledby="taskss">
                         <div class="dropdown-menu-header">
-                            Tasks (7/10)
+                            Jobs &amp; Tasks ({{JobsController::count()}})
                         </div>
                         <div class="customScroll">
                             <ul class="activity">
-                                <li class="activity-list">
-                                    <div class="detail-info">
-                                        <p class="date">Today</p>
-                                        <p class="info">Messages accepted with attachments</p>
-                                    </div>
-                                </li>
-                                <li class="activity-list danger">
-                                    <div class="detail-info">
-                                        <p class="date">Today</p>
-                                        <p class="info">Send email notifications of subscriptions and deletions to list owner</p>
-                                    </div>
-                                </li>
-                                <li class="activity-list success">
-                                    <div class="detail-info">
-                                        <p class="date">Yesterday</p>
-                                        <p class="info">Required change logs activity reports</p>
-                                    </div>
-                                </li>
-                                <li class="activity-list warning">
-                                    <div class="detail-info">
-                                    <p class="date">2 Days Ago</p>
-                                        <p class="info">Strategic partnership plan</p>
-                                    </div>
-                                </li>
-                                <li class="activity-list">
-                                    <div class="detail-info">
-                                        <p class="date">2 days ago</p>
-                                        <p class="info">Send email notifications of subscriptions and deletions to list owner</p>
-                                    </div>
-                                </li>
-                                <li class="activity-list danger">
-                                    <div class="detail-info">
-                                        <p class="date">3 days ago</p>
-                                        <p class="info">Required change logs activity reports</p>
-                                    </div>
-                                </li>
-                                <li class="activity-list success">
-                                    <div class="detail-info">
-                                    <p class="date">7 days ago</p>
-                                        <p class="info">Strategic partnership plan</p>
-                                    </div>
-                                </li>
-                                <li class="activity-list">
-                                    <div class="detail-info">
-                                        <p class="date">2 weeks ago</p>
-                                        <p class="info">Required change logs activity reports</p>
-                                    </div>
-                                </li>
+                                @foreach ($jobs as $job)
+                                    <li class="activity-list warning">
+                                        <div class="detail-info">
+                                            <p class="date">Portal Job</p>
+                                            <p class="info">{{$job['created']}}</p>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
+                            <div class="p-3">
+                                <a href="javascript:void(0)" class="btn btn-primary w-100 p-3 text-bold ">View all Jobs</a>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -95,70 +59,11 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end lrg" aria-labelledby="notifications">
                         <div class="dropdown-menu-header">
-                            Notifications (7)
+                            Notifications (0)
                         </div>
                         <div class="customScroll">
                             <ul class="header-notifications">
-                                <li>
-                                    <a href="#">
-                                        <div class="user-img online">
-                                            <img src="/assets/img/user6.png" alt="User">
-                                        </div>
-                                        <div class="details">
-                                            <div class="user-title">Larkyn</div>
-                                            <div class="noti-details">Check out every table in detail.</div>
-                                            <div class="noti-date">April 25, 04:00 pm</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="user-img busy">
-                                            <img src="/assets/img/user10.png" alt="User">
-                                        </div>
-                                        <div class="details">
-                                            <div class="user-title">Braxten</div>
-                                            <div class="noti-details">Approved new design.</div>
-                                            <div class="noti-date">April 10, 12:00 am</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="user-img away">
-                                            <img src="/assets/img/user21.png" alt="User">
-                                        </div>
-                                        <div class="details">
-                                            <div class="user-title">Maria</div>
-                                            <div class="noti-details">Membership has been ended.</div>
-                                            <div class="noti-date">March 20, 07:30 pm</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="user-img busy">
-                                            <img src="/assets/img/user15.png" alt="User">
-                                        </div>
-                                        <div class="details">
-                                            <div class="user-title">Alex</div>
-                                            <div class="noti-details">Design Review.</div>
-                                            <div class="noti-date">April 18, 09:30 am</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="user-img online">
-                                            <img src="/assets/img/user5.png" alt="User">
-                                        </div>
-                                        <div class="details">
-                                            <div class="user-title">Sunny</div>
-                                            <div class="noti-details">UI Discussion</div>
-                                            <div class="noti-date">April 21, 05:00 pm</div>
-                                        </div>
-                                    </a>
-                                </li>												
+                                											
                             </ul>
                         </div>
                     </div>

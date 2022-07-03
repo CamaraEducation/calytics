@@ -1,4 +1,4 @@
-<nav class="sidebar-wrapper">
+<nav class="sidebar-wrapper no-print">
     <div class="sidebar-tabs">
         <div class="nav" role="tablist" aria-orientation="vertical">
             <a href="#" class="logo">
@@ -18,7 +18,7 @@
             </a>
             <a class="nav-link settings" href="/logout">
                 <i class="icon-log-out1"></i>
-                <span class="nav-link-text">Settings</span>
+                <span class="nav-link-text">Logout</span>
             </a>
         </div>
         
