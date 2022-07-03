@@ -185,6 +185,10 @@ Route::add('/portal/dashboard', function() {
 	return Blade::render('portal.home');
 });
 
+Route::add('/portal/report', function() {
+	return Blade::render('portal.report');
+});
+
 /****************************************************
  *                      API ROUTES                  *
  *                  STARTING FROM HERE              *
@@ -252,7 +256,7 @@ Route::add('/test/upload', function() {
 Route::add('/test', function() {   
 	# return unauthorised access header
 	echo '<pre>';
-	print_r(ManicStatsController::manic_app_stat('Google Chrome'));
+	print_r(PortalController::month_session_graph());
 });
 
 /****************************************************
