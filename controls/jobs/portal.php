@@ -13,7 +13,6 @@
 			endif;
 
 			$res = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
-
 			self::delete_job($res['id']);
 			return $res['file'];
 		}
@@ -26,7 +25,7 @@
 		}
 
 		public static function delete_job($id){
-			$sql = "DELETE from portal_job where id='$id'";
+			$sql = "DELETE from portal_jobs where id='$id'";
 			mysqli_query(conn(), $sql);
 		}
 	}
