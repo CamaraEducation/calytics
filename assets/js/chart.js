@@ -1,5 +1,4 @@
 function bar_utime_vs_dtime(utime, dtime) {
-    //sample bar chartjs with data from january to december
     var ctx = document.getElementById("bar_utime_vs_dtime").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -201,6 +200,177 @@ function sc_file_stat(labels, data){
             }]
         },
         options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function portal_month_sess(data){
+    var ctx = document.getElementById("portal_activity").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+                label: 'Recorded Sessions',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function portal_date_sess(label, data){
+    var ctx = document.getElementById("dt_portal_activity").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Recorded sessions',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function portal_month_ltime(data){
+    var ctx = document.getElementById("portal_live_time").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+                label: 'Monthly Live Time',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function portal_date_ltime(label, data){
+    var ctx = document.getElementById("dt_portal_live_time").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Daily Live Time',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function top_applets(label, data){
+    var ctx = document.getElementById("top_applets").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Activities Captured',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function top_videos(label, data){
+    var ctx = document.getElementById("top_videos").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Activities Captured',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function top_docs(label, data){
+    var ctx = document.getElementById("top_docs").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Activities Captured',
+                data: data,
+                backgroundColor: 'rgba(0, 60, 100, 0.2)',
+                borderColor: 'rgba(0, 60, 100, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
             scales: {
                 y: {
                     beginAtZero: true
