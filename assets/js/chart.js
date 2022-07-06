@@ -233,8 +233,8 @@ function portal_month_sess(data){
     });
 }
 
-function portal_date_sess(label, data){
-    var ctx = document.getElementById("dt_portal_activity").getContext('2d');
+function portal_date_sess(label, data, selector){
+    var ctx = document.getElementById(selector).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -281,8 +281,8 @@ function portal_month_ltime(data){
     });
 }
 
-function portal_date_ltime(label, data){
-    var ctx = document.getElementById("dt_portal_live_time").getContext('2d');
+function portal_date_ltime(label, data, selector){
+    var ctx = document.getElementById(selector).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -305,8 +305,8 @@ function portal_date_ltime(label, data){
     });
 }
 
-function top_applets(label, data){
-    var ctx = document.getElementById("top_applets").getContext('2d');
+function top_applets(label, data, selector){
+    var ctx = document.getElementById(selector).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -330,8 +330,8 @@ function top_applets(label, data){
     });
 }
 
-function top_videos(label, data){
-    var ctx = document.getElementById("top_videos").getContext('2d');
+function top_videos(label, data, selector){
+    var ctx = document.getElementById(selector).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -355,8 +355,8 @@ function top_videos(label, data){
     });
 }
 
-function top_docs(label, data){
-    var ctx = document.getElementById("top_docs").getContext('2d');
+function top_docs(label, data, selector){
+    var ctx = document.getElementById(selector).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
