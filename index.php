@@ -212,6 +212,10 @@ Route::add('/api/portal/sync', function() {
 
 }, ['post']);
 
+Route::add('/api/portal/report', function() {
+	return Blade::render('portal.report.general');
+}, ['get','post']);
+
 
 /****************************************************
  *                      JOB ROUTES                  *
