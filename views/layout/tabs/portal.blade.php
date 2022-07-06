@@ -8,9 +8,6 @@
                 <a href="/portal/dashboard"><i class="icon-laptop"></i> Dashboard</a>
             </li>
             <li>
-                <a href="/portal/report"><i class="icon-layers2"></i> Reports</a>
-            </li>
-            <li>
                 <a href="/portal/data/add"><i class="icon-arrow-up-circle"></i> Jobs</a>
             </li>
             <li>
