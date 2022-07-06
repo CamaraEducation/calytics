@@ -116,8 +116,8 @@
     						Dashboard
     						</a>
     					@else
-    						<a href="/login" class="btn btn-secondary me-2">
-    						Login
+    						<a href="/Dashboard" class="btn btn-secondary me-2">
+    						Dashboard
     						</a>
     					@endif
 					</div>
