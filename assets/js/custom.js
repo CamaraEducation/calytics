@@ -54,6 +54,17 @@ function filter_report(){
     $("#filter").on('click', function () {
         // get date range from datepicker #range
         var date_range = $("#ranger").val();
-        console.log(date_range);
+
+        //post request to /api/portal/report
+        $.post("/api/portal/report", {
+            date_range: date_range
+        }, function (data, status) {
+            console.log(status);
+            //append data to #generalReport
+            $("#generalReport").html(data);
+        });
+
+        // clear all chartjs canvases
+        $('#filterPortalReport').modal('toggle');
     });
 }
