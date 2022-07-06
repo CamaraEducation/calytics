@@ -51,11 +51,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="profile-avatar-tile no-print">
-							<button class="btn btn-primary container-fluid text-bold" data-bs-toggle="modal" data-bs-target="#filterPortalReport" disabled>Filter</button>
-							<div class="xs-space"></div>
-							<button class="btn btn-warning container-fluid text-bold" id="btnConvert" disabled>Print</button>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -171,8 +166,6 @@
 		</div> 
 	</div>
 
-	<div id="previewImg"></div>
-
 	@include('modals.portal.filter_report')
 @endsection
 @section('scripts')
@@ -191,11 +184,11 @@
 	var video   = {!! json_encode(PortalController::video_stats(10)) !!};
 	var doc     = {!! json_encode(PortalController::doc_stats(10)) !!};
 	
-	portal_date_sess(rd_sess.date, rd_sess.sess);
-	portal_date_ltime(rd_time.date, rd_time.live);
-	top_applets(applet.title, applet.activity);
-	top_videos(video.title, video.activity);
-	top_docs(doc.title, doc.activity);
+	portal_date_sess(rd_sess.date, rd_sess.sess, 'dt_portal_activity');
+	portal_date_ltime(rd_time.date, rd_time.live, 'dt_portal_live_time');
+	top_applets(applet.title, applet.activity, 'top_applets');
+	top_videos(video.title, video.activity, 'top_videos');
+	top_docs(doc.title, doc.activity, 'top_docs');
 
 	generate_pdf();
 	filter_report();
