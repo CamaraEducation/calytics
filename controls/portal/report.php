@@ -148,4 +148,18 @@ class PortalReports{
         }
         return array('title'=>$title, 'activity'=>$activity);
     }
+
+    public static function content_distro($from, $to, $id=''){
+        $sql = "SELECT type, COUNT(type) as total FROM portal_content WHERE year(created) = year(now()) AND date(created) BETWEEN '$from' AND '$to' GROUP by type";
+        $res = mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
+
+        $type = array();
+        $total = array();
+        foreach($res as $r){
+            $type[] = $r['type'];
+            $total[] = $r['total'];
+        }
+
+        return array('type'=>$type, 'total'=>$total);
+    }
 }
