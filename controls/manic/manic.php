@@ -36,7 +36,12 @@ class ManicController{
 	
 				if (!empty($sid) and !empty($start_time) and !empty($end_time) and !empty($duration) and !empty($process)) {
 					$sq = "INSERT INTO manic_apps VALUES (DEFAULT, '$sid', '$start_time', '$end_time', '$duration', '$process', DEFAULT)";
-					mysqli_query(conn(), $sq);
+					if(mysqli_query(conn(), $sq)):
+					else:
+						$start_time = ManicUtils::date_fix($start_time);
+						$end_time = ManicUtils::date_fix($end_time);
+						mysqli_query(conn(), $sq);
+					endif;
 				}else{
 					header('HTTP/1.1 500 Internal Server Error');
 				}
@@ -60,7 +65,12 @@ class ManicController{
 	
 				if (!empty($sid) and !empty($start_time) and !empty($end_time) and !empty($duration) and !empty($domain)) {
 					$sq = "INSERT INTO manic_files VALUES (DEFAULT, '$sid', '$start_time', '$end_time', '$duration', '$domain', DEFAULT)";
-					mysqli_query(conn(), $sq);
+					if(mysqli_query(conn(), $sq)):
+					else:
+						$start_time = ManicUtils::date_fix($start_time);
+						$end_time = ManicUtils::date_fix($end_time);
+						mysqli_query(conn(), $sq);
+					endif;
 				}else{
 					header('HTTP/1.1 500 Internal Server Error');
 				}
@@ -84,7 +94,12 @@ class ManicController{
 
 				if (!empty($sid) and !empty($start_time) and !empty($end_time) and !empty($duration)) {
 					$sq = "INSERT INTO manic_usage VALUES (DEFAULT, '$sid', '$status', '$start_time', '$end_time', '$duration', DEFAULT);";
-					mysqli_query(conn(), $sq);
+					if(mysqli_query(conn(), $sq)):
+					else:
+						$start_time = ManicUtils::date_fix($start_time);
+						$end_time = ManicUtils::date_fix($end_time);
+						mysqli_query(conn(), $sq);
+					endif;
 				}else{
 					header('HTTP/1.1 500 Internal Server Error');
 				}
