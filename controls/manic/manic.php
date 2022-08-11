@@ -1,7 +1,7 @@
 <?php
 class ManicController{
 	public static function import($id){
-		$allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+		$allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx', 'text/csv', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 	
 		if(in_array($_FILES["file"]["type"],$allowedFileType)){
 
